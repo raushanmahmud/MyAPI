@@ -40,12 +40,14 @@ namespace MyAPI.Controllers
             try
             {
                 db.SaveChanges();
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, employee);
+                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = employee.id }));
+                return response;
             } catch (DbUpdateConcurrencyException ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK);
         }
         
         // POST: api/Employees
