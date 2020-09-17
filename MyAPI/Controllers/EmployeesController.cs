@@ -28,7 +28,7 @@ namespace MyAPI.Controllers
         }
 
         // PUT: api/Employees/1
-        public HttpResponseMessage UpdateEmployee(Employee employee)
+        public HttpResponseMessage PutEmployee(Employee employee)
         {
             if (!ModelState.IsValid)
             {
@@ -40,15 +40,12 @@ namespace MyAPI.Controllers
             try
             {
                 db.SaveChanges();
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, "Employee updated successfully");
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = employee.id }));
-                return response;
             } catch (DbUpdateConcurrencyException ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
             }
 
-            
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
         
         // POST: api/Employees
