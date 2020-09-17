@@ -12,12 +12,13 @@ namespace MyAPI.Controllers
 {
     public class EmployeesController : ApiController
     {
-        private testAPiEntities db = new testAPiEntities();
+        private testAPiEntities1 db = new testAPiEntities1();
 
         // GET: api/Employees
         public IQueryable<Employee> GetEmployees()
         {
             return db.Employee;
+            
         }
 
         // GET: api/Employees/1
@@ -46,7 +47,7 @@ namespace MyAPI.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-
+        
         // POST: api/Employees
         public HttpResponseMessage PostEmployee(Employee employee)
         {
@@ -55,7 +56,7 @@ namespace MyAPI.Controllers
                 db.Employee.Add(employee);
                 db.SaveChanges();
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, employee);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = employee.EmplyeeID }));
+                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = employee.id }));
                 return response;
             }
             else
@@ -64,7 +65,26 @@ namespace MyAPI.Controllers
             }
         }
 
+        // DELETE: api/Employees/1
+        public HttpResponseMessage DeleteEmployee(Employee employee)
+        {
+            Employee employee_to_remove = db.Employee.Find(employee.id);
+            if (employee_to_remove == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            db.Employee.Remove(employee_to_remove);
+            try
+            {
+                db.SaveChanges();
+            } catch (DbUpdateConcurrencyException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            }
 
+            return Request.CreateResponse(HttpStatusCode.OK);
+
+        }
 
         protected override void Dispose(bool disposing)
         {

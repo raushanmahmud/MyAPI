@@ -13,10 +13,10 @@ namespace MyAPI.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class testAPiEntities : DbContext
+    public partial class testAPiEntities1 : DbContext
     {
-        public testAPiEntities()
-            : base("name=testAPiEntities")
+        public testAPiEntities1()
+            : base("name=testAPiEntities1")
         {
         }
     

@@ -14,7 +14,7 @@ namespace MyAPI.Models
     
     public partial class Employee
     {
-        public int EmplyeeID { get; set; }
+        public int id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }
