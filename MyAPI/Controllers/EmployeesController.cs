@@ -28,7 +28,7 @@ namespace MyAPI.Controllers
         }
 
         // PUT: api/Employees/1
-        public HttpResponseMessage PutEmployee(Employee employee)
+        public HttpResponseMessage PutEmployee(int id, Employee employee)
         {
             if (!ModelState.IsValid)
             {
@@ -66,9 +66,9 @@ namespace MyAPI.Controllers
         }
 
         // DELETE: api/Employees/1
-        public HttpResponseMessage DeleteEmployee(Employee employee)
+        public HttpResponseMessage DeleteEmployee(int id)
         {
-            Employee employee_to_remove = db.Employee.Find(employee.id);
+            Employee employee_to_remove = db.Employee.Find(id);
             if (employee_to_remove == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
