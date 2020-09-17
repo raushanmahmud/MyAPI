@@ -66,9 +66,9 @@ namespace MyAPI.Controllers
         }
 
         // DELETE: api/Employees/1
-        public HttpResponseMessage DeleteEmployee(int id)
+        public HttpResponseMessage DeleteEmployee(Employee employee)
         {
-            Employee employee_to_remove = db.Employee.Find(id);
+            Employee employee_to_remove = db.Employee.Find(employee.id);
             if (employee_to_remove == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
