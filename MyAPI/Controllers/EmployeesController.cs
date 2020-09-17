@@ -22,9 +22,9 @@ namespace MyAPI.Controllers
         }
 
         // GET: api/Employees/1
-        public Employee GetEmployee(int id)
+        public Employee GetEmployee(Employee employee)
         {
-            return db.Employee.Find(id);
+            return db.Employee.Find(employee.id);
         }
 
         // PUT: api/Employees/1
