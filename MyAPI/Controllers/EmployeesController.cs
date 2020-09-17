@@ -82,7 +82,7 @@ namespace MyAPI.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return Request.CreateResponse(HttpStatusCode.OK, "Emloyee deleted Successfully");
 
         }
 
