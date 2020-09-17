@@ -28,8 +28,16 @@ namespace MyAPI.Controllers
         }
 
         // PUT: api/Employees/1
-        public HttpResponseMessage PutEmployee(Employee employee)
+        public HttpResponseMessage PutEmployee(Employee employee, int id = 0)
         {
+            if (id != 0) 
+            {
+                if (employee.id != id)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                employee.id = id;
+            }
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
