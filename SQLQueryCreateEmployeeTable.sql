@@ -1,0 +1,5 @@
+﻿CREATE TABLE Employee(
+	EmplyeeID INT IDENTITY(1,1)CONSTRAINT Pk_EMp_Id PRIMARY KEY,
+	FirstName VARCHAR(20),
+	LastName VARCHAR(20)
+);
