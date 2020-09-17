@@ -28,7 +28,7 @@ namespace MyAPI.Controllers
         }
 
         // PUT: api/Employees/1
-        public HttpResponseMessage PutEmployee(Employee employee, int id)
+        public HttpResponseMessage PutEmployee(Employee employee, int id=0)
         {
             if (id != 0) 
             {
