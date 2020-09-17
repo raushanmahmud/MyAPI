@@ -11,7 +11,7 @@ namespace MyAPI.Controllers
     {
         public string Get()
         {
-            return "Welcome to the Web api";
+            return "Welcome to the Web API";
         }
 
         public List <string> Get(int id)
